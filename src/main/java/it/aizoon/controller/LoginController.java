@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import it.aizoon.model.dao.UtenteDAO;
 import it.aizoon.model.dto.Utente;
 
 /**
@@ -31,11 +32,12 @@ public class LoginController extends HttpServlet {
 		String pwd = request.getParameter("pwd");
 		String pagina = "login.jsp";
 		String msg = "";
-		Utente ut = null;
-		if(username.equalsIgnoreCase("admin") && pwd.equals("admin")) {
-			ut = new Utente("Franco","Grivet",username,pwd);
+		UtenteDAO dao = new UtenteDAO();
+		Utente ut = dao.searchByUsernameAndPassword(username, pwd);
+		if(ut != null) {
 			pagina = "amministrazione.jsp";
 			msg = "Autenticato!!!";
+			request.setAttribute("utente", ut);
 		}
 		else {
 			msg = "Errore di autenticazione, login e/o password errati";
