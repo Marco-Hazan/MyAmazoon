@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/stile-generale.css"> <!-- type posso anche non dichiararlo-->
+        <link rel="stylesheet" href="css/bootstrap-4.6.1-dist/css/bootstrap.min.css">
+        <title>Document</title>
+        <!-- STILE EMBEDDED
+            <style>
+                a{ 
+                    color:red;
+                    text-decoration: dotted; 
+                    border:1px solid black; 
+                    border-radius:5px;
+                    background-color: black;
+                    color:white;
+                    padding:0.2em
+                }
+                a:hover{color: yellow}
+                a:active{color:red} /* colore del testo quando ci clicco sopra */
+                #header{ width: 90%; margin: 2em; padding:1em;background-color: black;color:white } 
+                /* em: dimensione relativa al font dell'elemento padre: di solito 14px, rem: font del contenitore html: 16px di default*/
+                #footer{ width: 90%; margin: 2em; padding:1em;background-color: rgba(161, 208, 60, 0.877);color:white } 
+                /* colori esprimibili con codice esadecimale, decimale tra parentesi, quarto valore: trasparenza (rgba)*/
+                li{display:inline; margin-right:3em}
+            </style>
+        -->
+    </head>
+    <!--
+        STILI IN ORDINE DI PRECEDENZA:
+            STYLE INLINE: DENTRO TAG sconsigliato
+            STYLE EMBEDDED: DENTRO HEAD si usa se c'è poco stile o per prova
+            FILE ESTERNO CSS
+    -->
+    <body>
+        <!-- HEADER DELLA PAGINA-->
+        <header>
+            Benvenuti su AmAizoon!
+        </header>
+        <!-- NAVIGAZIONE -->
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="prodotto-list.html">Elenco Prodotti</a></li>
+                <li><a href="utente-list.html">Elenco Utenti</a></li>
+                <li><a href="ordine-list.html">Elenco Ordini</a></li>
+                <li><a href="prodotto-form.html">Crea nuovo prodotto</a></li>
+                <li><a href="utente-form.html">Registra utente</a></li>
+            </ul>
+        </nav>
+        <!--   MAIN    -->
+        <main>
+            <!--GET PIU PERFORMANTE MA LIMITE DI CARATTERI NELLA STRINGA CHE SALVA I VARI PARAMETRI-->
+            <form action="ProdottoController" method="get">
+                Nome: <input type="text" name="nome">
+                Prezzo: <input type="number" name="prezzo" id="">
+                Descrizione: <textarea name="descrizione" id="" cols="40" rows="3"></textarea>
+                Categoria: 
+                <!-- CON RADIO BUTTONS: <input type="radio" name="categoria" value="Smartphone">Smartphone
+                <input type="radio" name="categoria" value="Portatili id="">Portatili
+                <input type="radio" name="categoria" value="Elettrodomestici">Elettrodomestici -->
+                <select name="categoria" id="">
+                    <option value="Smartphone">Smartphone</option>
+                    <option value="Portatili">Portatili</option>
+                    <option value="Elettrodomestici">Elettrodomestici</option>
+                </select>
+                <button type="submit">INVIA</button>
+                <button type="reset">Cancella</button>
+
+            </form>
+        </main>
+        <footer>
+            Contattaci <a href="mailto:franco.grivtechi@gmail.com">qui</a>
+        </footer>
+
+    </body>
+</html>

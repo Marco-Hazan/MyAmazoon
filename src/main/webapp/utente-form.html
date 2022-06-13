@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/stile-generale.css">
+    <link rel="stylesheet" href="css/bootstrap-4.6.1-dist/css/bootstrap.min.css">
+    <title>Document</title>
+</head>
+<body>
+    <!--USANDO TAG HTML5 PIU ELEGANTE E MOTORI DI RICERCA PUO' INDIRIZZARE MEGLIO IL SITO-->
+    <header>
+        Registrazione utente
+    </header>
+    <nav>
+        <ul>
+            <li><a class="btn btn-primary" href="index.html">Home</a></li>
+            <li><a class="btn btn-primary" href="prodotto-list.html">Elenco Prodotti</a></li>
+            <li><a class="btn btn-primary" href="utente-list.html">Elenco Utenti</a></li>
+            <li><a class="btn btn-primary" href="ordine-list.html">Elenco Ordini</a></li>
+            <li><a class="btn btn-primary" href="prodotto-form.html">Crea nuovo prodotto</a></li>
+            <li><a class="btn btn-primary" href="utente-form.html">Registra utente</a></li>
+        </ul>
+    </nav>
+    <main>
+        <form action="get" method="UtenteController">
+            Nome: <input type="text" name="nome" >
+            Cognome: <input type="text" name="cognome">
+            Data di nascita: <input type="date" name="data_nascita" id="">
+            Sesso: 
+            <input type="radio" name="sesso" id="">M 
+            <input type="radio" name="sesso" id="">F<br>
+            Città di residenza: 
+            <select name="" id="">
+                <option value="Milano">Milano</option>
+                <option value="Parigi">Parigi</option>
+                <option value="New York">New York</option>
+                <option value="Stoccolma">Stoccolma</option>
+            </select>
+            <button type="submit">INVIA</button>
+            <button type="reset">CANCELLA</button>
+        </form>
+    </main>
+    <footer>
+        Contattaci <a href="mailto:franco.grivtechi@gmail.com">qui</a>
+    </footer>
+</body>
+</html>

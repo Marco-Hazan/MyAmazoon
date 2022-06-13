@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap-4.6.1-dist/css/bootstrap.min.css">
+    <title>Prodotto Form</title>
+</head>
+<body class="bg-light">
+    <div class="container-fluid">
+        <div class="row p-3 align-items-center">
+            <div class = "col-3">
+                <img src="img/amazon.png" class="w-25" alt="logo">
+            </div>
+            <div class="col-6 text-center font">
+                <a style="font-size:38px" class="navbar-brand" href="index.html"> Amaizoon</a>
+            </div>
+        </div>
+        <div class="row bg-primary text-white">
+            <div class="col"> 
+                <a class ="btn btn-sm btn-danger m-2" href="login.html">Login</a>
+                <a class ="btn btn-sm btn-primary m-2" href="lista-prodotti.html">Lista Prodotti</a>
+                <a class ="btn btn-sm btn-primary m-2" href="utente-list.html">Lista Utenti</a>
+                <a class ="btn btn-sm btn-primary m-2" href="index.html">Lista ordini </a>
+                <a class ="btn btn-sm btn-primary m-2" href="prodotto-form.html">Crea prodotto </a>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-8 m-5">
+                <p class="text-danger" id="targetErrore"></p>
+                <h2>Crea Prodotto</h2>
+                <form action="ProdottoController" id="prodottoForm" method="get" class="border border-info p-4">
+                    <div class="form-row g-4">
+                        <div class="col-3">
+                            <div class="form-group">
+                                <label for="data_inserimento">Data inserimento:</label>
+                                <input class="form-control" type="date" name="data_inserimento" id="data_inserimento" required>
+                            </div>
+                        </div>
+                        <div class="col-9">
+                            <div class="form-group">
+                                <label for="nome_prodotto">Nome prodotto</label>
+                                <input class="form-control" type="text" name="nome_prodotto" id="nome_prodotto" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row g-4">
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="cat_prod">Categoria prodotto</label>
+                                <select name="categoria" class="form-select form-control" required>
+                                    <option selected disabled>Scegli!</option>
+                                    <option value="portatili">Portatili</option>
+                                    <option value="smartphone">Smartphone</option>
+                                    <option value="elettrodomestici">Elettrodomestici</option>
+                                  </select>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="prezzo_prodotto">Prezzo prodotto</label>
+                                <input class="form-control" type="number" name="prezzo_prodotto" id="nome_prodotto" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row g-4">
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="desc_prodotto">Descrizione prodotto</label>
+                                <textarea class="form-control" name="Descrizione" id="desc_prodotto" cols="30" rows="3" required></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <button class="btn btn-success" type="button" onclick="validaDati()"> Inserisci</button>
+                        </div>
+                        <div class="col-6 text-right">
+                            <button class="btn btn-success" type="reset"> Pulisci</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        /*
+            Il tasto submit lo trasformo in un semplice tasto button così non spedisce automaticamente.
+            Se password o utente sono nulli faccio vedere messaggio errore, sennò spedisco i dati del form tramite js
+            Altra opzione: nel tag del form -> onSubmit(return funzione()) se la funzione è false non submitta
+        */
+
+        function isDataNelFuturo(datainput){
+            let data_inserita = new Date(datainput);
+            let data_di_oggi = new Date();
+            return data_di_oggi.getTime() < data_inserita.getTime();
+        }
+
+        function isDataTroppoNelPassato(datainput){
+            let data_inserita = new Date(datainput);
+            let data_di_oggi = new Date();
+        }
+
+
+
+        function validaDati(){
+            let formProdotto = document.getElementById("prodottoForm");
+            const data_inserimento = formProdotto.data_inserimento.value;
+            const nome_prodotto = document.getElementById("nome_prodotto").value;
+            const categoria = formProdotto.categoria.value;
+            const prezzo_prodotto = formProdotto.prezzo_prodotto.value;
+            const Descrizione = formProdotto.Descrizione.value;
+            let msgErrore = "";
+            alert(categoria);
+            let data = new Date(data_inserimento);
+            if(data_inserimento == "")
+                msgErrore += "Il campo data è obbligatorio!!<br>";
+            if(isDataNelFuturo(data_inserimento)){
+                msgErrore += "Il campo data sta nel futuro!!<br>";
+            }
+            if(nome_prodotto == "")
+                msgErrore += "Il campo nome prodotto è obbligatorio!!<br>";
+            if(categoria == "")
+                msgErrore += "Il campo categoria è obbligatorio!!<br>";
+            if(prezzo_prodotto == "")
+                msgErrore += "Il campo prezzo prodotto è obbligatorio!!<br>";
+            if(Descrizione == "")
+                msgErrore += "Il campo descrizione è obbligatorio!!<br>";
+            if(msgErrore != ""){
+                document.getElementById("targetErrore").innerHTML = msgErrore;
+            }else{
+                formProdotto.submit();
+            }
+
+        }
+    </script>
+</body>
+</html>

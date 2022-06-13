@@ -1,0 +1,73 @@
+Tipi di posizionamento:
+float
+positioning
+grid
+flex
+
+positioning 
+    static: default
+    absolute: relativo alla posizione del piu vicino parente; se nessun parente è posizionato allora va rispetto al body
+    fixed: relativo rispetto alla finestra
+    relative: relativo al contenitore
+    sticky: rispetto alla posizione in cui sta scrollando l'utente
+
+
+float 
+
+flexbox
+    assi verticali e orizzontali 
+
+grid:
+    display: grid nel container
+    dipslay: inline-grid per vari elementi
+
+
+BOOTSTRAP
+    tutti gli elementi devono stare dentro container 
+        container-fluid: width massima
+        container-(sm-md-lg-xlg) si hanno grandezze diverse 
+    class row
+        dentro class col-(da 1 a 12)
+
+    navbar-brand per le ancore
+
+    bg-[proprieta] per colori di background
+    proprieta testo: text-[proprieta]
+
+    btn-outline : senza colori di sfondo
+
+
+NEI FORM:
+    FORM-GROUP COME CLASSE PER OGNI CAMPO DEL FORM
+    FORM-CONTROL COME CLASSE PER OGNI INPUT DEL FORM 
+    LABEL FOR [id del input] per legare label a input
+
+    Se voglio fare un form piu articolato utilizzo form-grid 
+        form-row con dentro delle col normali (metto classe col insieme a classe form-group)
+
+
+INPUT OBBLIGATORI: attributo 'required'
+se voglio che un input si comporti in qualche modo a seconda se è valido oppure no :
+    input:valid 
+    input:invalid
+
+
+Table
+    table striped: tabella che differenza righe pari da righe dispari
+
+
+
+JAVASCRIPT
+    DOM: OGGETTI DEL DOCUMENTO GENERATI DA JAVASCRIPT
+    OGGETTI DI DEFAULT: tipo WINDOW E (Document, location, history, navigator, frames(windows opened)) tutti attributi da window
+    WINDOW si puo anche omettere tipo window.alert = alert o window.document = document
+    da document posso accedere a tutti gli elementi: tipo facendo document.forms o document.anchors o document.getElement...
+
+    var: variabili di funzione
+    let : variabili di bloco
+    const: costante
+    se non metto niente: variabile globale, anche se la dichiaro dentro una funzione
+    
+    Object formHTML, accedo ai vari campi direttamente come fossero attributi -> form.campo
+
+

@@ -1,0 +1,26 @@
+<?xml version = "1.0"?>
+<prodotti>
+    <prodotto>
+        <Id>1</Id>
+        <nome>Redmi 9c</nome>
+        <descrizione>Cellulare economico e veloce della Xiami </descrizione>
+        <categoria>Smartphone </categoria>
+        <promozione/>
+        <prezzo>129.00</prezzo>
+    </prodotto>
+</prodotti>
+
+<!-- un documento XML deve essere well-formed, ovvero:
+1) deve avere un unico elemento radice/contenitore
+2) tutti i tag devono essere aperti e chiusi oppure è ammesso l'elemento vuoto
+3) I tag con elementi vuoti posso chiuderli con <[nome_tag]/>
+4) I tag sono case sensitive (in HTML no)
+5) Gli attributi devono essere obligatoriamente quotati, attr = "[valore]"
+6) Non si può fare overlapping degli elementi, ovvero chiudo in ordine ciò che ho aperto per primo
+
+
+Se un documento xml è ben formato può essere parsificato e crea una struttura ad albero di nodi
+che possono essere gestiti e manipolati tramite javascript
+
+DOCUMENTO XHTML : HTML well formed
+-->
