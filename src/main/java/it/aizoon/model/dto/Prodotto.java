@@ -22,6 +22,14 @@ public class Prodotto {
 		this.categoria = categoria;
 		this.prezzo = prezzo;
 	}
+	
+	
+	public Prodotto(String nome, String descrizione, String categoria, double prezzo) {
+		this.nome = nome;
+		this.descrizione = descrizione;
+		this.categoria = categoria;
+		this.prezzo = prezzo;
+	}
 	/**
 	 * @return the id
 	 */

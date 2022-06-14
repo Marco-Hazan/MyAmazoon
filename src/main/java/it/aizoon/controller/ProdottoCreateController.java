@@ -1,7 +1,6 @@
 package it.aizoon.controller;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,20 +8,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import it.aizoon.model.dao.UtenteDAO;
-import it.aizoon.model.dto.Utente;
+import it.aizoon.model.dao.ProdottoDAO;
+import it.aizoon.model.dto.Prodotto;
 
 /**
- * Servlet implementation class UtenteControllerList
+ * Servlet implementation class ProdottoCreateController
  */
-public class UtenteControllerList extends HttpServlet {
-	String s;
+public class ProdottoCreateController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public UtenteControllerList() {
+    public ProdottoCreateController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,14 +30,22 @@ public class UtenteControllerList extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		UtenteDAO dao = new UtenteDAO();
-		List<Utente> utenti = dao.searchAll();
-		request.setAttribute("utenti",utenti);
-		String pagina = "utente-list.jsp";
-		//Il controller fa forward ad un'altra view
-		RequestDispatcher disp = request.getRequestDispatcher(pagina);
+		ProdottoDAO dao = new ProdottoDAO();
+		String nomeProdotto = request.getParameter("nome_prodotto");
+		String descrizione = request.getParameter("Descrizione");
+		String categoria = request.getParameter("categoria");
+		double prezzo_prodotto = Double.parseDouble(request.getParameter("prezzo_prodotto"));
+		Prodotto prodotto = new Prodotto(nomeProdotto, descrizione, categoria, prezzo_prodotto);
+		boolean aggiunto = dao.addProdotto(prodotto);
+		String msg ="";
+		if(aggiunto) {
+			msg = "Il prodotto è stato inserito correttamente";
+		}else {
+			msg = "C'è stato un problema";
+		}
+		request.setAttribute("messaggio", msg);
+		RequestDispatcher disp = request.getRequestDispatcher("ProdottoListController");
 		disp.forward(request, response);
-		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**

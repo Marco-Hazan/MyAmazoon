@@ -1,33 +1,23 @@
 <%@page import="java.util.List"%>
 <%@page import="it.aizoon.model.dto.Prodotto"%>
-<%@ page language="java"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/bootstrap-4.6.1-dist/css/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"
+    >
+    <link rel="stylesheet" href="css/bootstrap-4.6.1-dist/css/bootstrap.min.css" >
     <script src="js/prodotti-array.js"></script>   
     <title>Lista prodotti</title>
 </head>
 <body class="bg-light">
     <div class="container-fluid">
-        <div class="row p-3 align-items-center">
-            <div class = "col-3">
-                <img src="img/amazon.png" class="w-25" alt="logo">
-            </div>
-            <div class="col-6 text-center font">
-                <a style="font-size:38px" class="navbar-brand" href="index.html"> Amaizoon</a>
-            </div>
-        </div>
+        <%@include file = "resources/header.jsp" %>
         <div class="row bg-primary text-white">
             <div class="col"> 
-                <a class ="btn btn-sm btn-danger m-2" href="login.html">Login</a>
-                <a class ="btn btn-sm btn-primary m-2" href="lista-prodotti.html">Lista Prodotti</a>
-                <a class ="btn btn-sm btn-primary m-2" href="UtenteControllerList">Lista Utenti</a>
-                <a class ="btn btn-sm btn-primary m-2" href="index.html">Lista ordini </a>
-                <a class ="btn btn-sm btn-primary m-2" href="prodotto-form.html">Crea prodotto </a>
+                <%@include file = "resources/nav.jsp" %>
             </div>
         </div>
         <div class="row m-1">
@@ -62,34 +52,43 @@
                         <button class="btn d-inline btn-danger m-2">+Nuovo Prodotto</button>
                     </div>
                 </div>
-
+                <% 
+                	String msg = (String) request.getAttribute("messaggio");
+                	if(msg != null){
+                %>
+                	<div class="text-success"><%= msg %></div>
+                <% } %>
                 <table id="tableProdotti" class="table table-striped table-bordered">
                     <thead>
                         <th>ID</th>
                         <th>Nome</th>
                         <th>Descrizione</th>
-                        <th>Linguaggi conosciuti</th>
-                        <th>Indirizzo azienda</th>
+                        <th>Categoria</th>
+                        <th>Prezzo</th>
                     </thead>
                     
                     <tbody id ="bodyTabella">
                     	<% 
                     		List<Prodotto> prodotti = (List<Prodotto>) request.getAttribute("prodotti");
+                    		if (prodotti == null || prodotti.size() <= 0){
+                    			out.println("<tr><td colspan = 6>Nessun prodotto disponibile</td></tr>");
+                    		}else{
                     		for(Prodotto p: prodotti){
                     	%>
                     	<tr>
+                    		<td><%= p.getId() %></td>
                     		<td><%= p.getNome() %></td>
                     		<td><%= p.getDescrizione() %></td>
                     		<td><%= p.getCategoria() %></td>
-                    		<td> <%= p.getprezzo() %> </td>
+                    		<td> <%= p.getprezzo() %>€ </td>
                     		<td>
                                 <div class="btn-group">
                                     <button class="btn btn-warning">Modifica</button>
-                                    <button class="btn btn-danger">Cancella</button>
+                                    <a class="btn btn-danger" href="ProdottoDeleteController?id=<%= p.getId() %>">Cancella</a>
                                 </div>
                             </td>
                     	</tr>
-                    	<% } %>
+                    	<% }} %>
                     </tbody>
 
                 </table>

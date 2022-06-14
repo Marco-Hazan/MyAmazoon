@@ -13,21 +13,10 @@
 </head>
 <body class="bg-light">
     <div class="container-fluid">
-        <div class="row p-3 align-items-center">
-            <div class = "col-3">
-                <img src="img/amazon.png" class="w-25" alt="logo">
-            </div>
-            <div class="col-6 text-center font">
-                <a style="font-size:38px" class="navbar-brand" href="index.html"> Amaizoon</a>
-            </div>
-        </div>
+        <%@include file = "resources/header.jsp" %>
         <div class="row bg-primary text-white">
             <div class="col"> 
-                <a class ="btn btn-sm btn-danger m-2" href="login.html">Login</a>
-                <a class ="btn btn-sm btn-primary m-2" href="lista-prodotti.html">Lista Prodotti</a>
-                <a class ="btn btn-sm btn-primary m-2" href="utente-list.html">Lista Utenti</a>
-                <a class ="btn btn-sm btn-primary m-2" href="index.html">Lista ordini </a>
-                <a class ="btn btn-sm btn-primary m-2" href="prodotto-form.html">Crea prodotto </a>
+                <%@include file = "resources/nav.jsp" %>
             </div>
         </div>
         <div class="row m-2 p-2">
