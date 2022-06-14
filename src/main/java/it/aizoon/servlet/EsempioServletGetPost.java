@@ -1,44 +1,44 @@
-package it.aizoon.controller;
+package it.aizoon.servlet;
 
 import java.io.IOException;
-import java.util.List;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import it.aizoon.model.dao.UtenteDAO;
-import it.aizoon.model.dto.Utente;
-
 /**
- * Servlet implementation class UtenteControllerList
+ * Servlet implementation class EsempioServletTabellaPitagoricca
  */
-public class UtenteControllerList extends HttpServlet {
+public class EsempioServletGetPost extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public UtenteControllerList() {
+    public EsempioServletGetPost() {
         super();
         // TODO Auto-generated constructor stub
     }
+    
+    
+
+	@Override
+	public void init() throws ServletException {
+		// TODO Auto-generated method stub
+		super.init();
+		System.out.println("Chiamato per la prima volta");
+	}
+
+
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		UtenteDAO dao = new UtenteDAO();
-		List<Utente> utenti = dao.searchAll();
-		request.setAttribute("utenti",utenti);
-		String pagina = "utente-list.jsp";
-		//Il controller fa forward ad un'altra view
-		RequestDispatcher disp = request.getRequestDispatcher(pagina);
-		disp.forward(request, response);
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		//Leggo parametro inviato
+		String numero = request.getParameter("numero");
+		response.getWriter().append("Mi hai spedito via get: ").append(numero);
 	}
 
 	/**
@@ -46,7 +46,8 @@ public class UtenteControllerList extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		String numero = request.getParameter("numero");
+		response.getWriter().append("Mi hai spedito via post: ").append(numero);
 	}
 
 }

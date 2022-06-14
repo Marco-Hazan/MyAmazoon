@@ -29,4 +29,24 @@
     <servlet-name>UtenteControllerList</servlet-name>
     <url-pattern>/UtenteControllerList</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>EsempioServletTabellaPitagorica</display-name>
+    <servlet-name>EsempioServletTabellaPitagorica</servlet-name>
+    <servlet-class>it.aizoon.servlet.EsempioServletGetPost</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EsempioServletTabellaPitagorica</servlet-name>
+    <url-pattern>/EsempioServletTabellaPitagorica</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ProdottoListController</display-name>
+    <servlet-name>ProdottoListController</servlet-name>
+    <servlet-class>it.aizoon.controller.ProdottoListController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ProdottoListController</servlet-name>
+    <url-pattern>/ProdottoListController</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -1,5 +1,5 @@
 <%@page import="java.util.List"%>
-<%@page import="it.aizoon.model.dto.Utente"%>
+<%@page import="it.aizoon.model.dto.Prodotto"%>
 <%@ page language="java"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -7,11 +7,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="js/utenti-json.js"></script>
     <link rel="stylesheet" href="css/bootstrap-4.6.1-dist/css/bootstrap.min.css">
-    <title>Document</title>
+    <script src="js/prodotti-array.js"></script>   
+    <title>Lista prodotti</title>
 </head>
-<body>
+<body class="bg-light">
     <div class="container-fluid">
         <div class="row p-3 align-items-center">
             <div class = "col-3">
@@ -23,9 +23,9 @@
         </div>
         <div class="row bg-primary text-white">
             <div class="col"> 
-                <a class ="btn btn-sm btn-danger m-2" href="login.jsp">Login</a>
+                <a class ="btn btn-sm btn-danger m-2" href="login.html">Login</a>
                 <a class ="btn btn-sm btn-primary m-2" href="lista-prodotti.html">Lista Prodotti</a>
-                <a class ="btn btn-sm btn-primary m-2" href="utente-list.html">Lista Utenti</a>
+                <a class ="btn btn-sm btn-primary m-2" href="UtenteControllerList">Lista Utenti</a>
                 <a class ="btn btn-sm btn-primary m-2" href="index.html">Lista ordini </a>
                 <a class ="btn btn-sm btn-primary m-2" href="prodotto-form.html">Crea prodotto </a>
             </div>
@@ -38,10 +38,25 @@
                 <button class="btn btn-block btn-outline-primary">Elenco utenti</button>
             </div>
             <div class="col-10">
+                <!--
+                <div class="row">
+                    <div class="col-3">
+                        <button class="btn btn-primary">Visualizza tabella di array di array</button>
+                    </div>
+                    <div class="col-3">
+                        <button class="btn btn-warning">Visualizza tabella di array di JSON</button>
+                    </div>
+                    <div class="col-5">
+                        <h3>Riepilogo Prodotti Presenti</h3>
+                    </div>
+                    <div class="col-1">
+                        <button class="btn btn-danger">+Nuovo Prodotto</button>
+                    </div>
+                </div> -->
                 <button class="btn btn-warning" onclick="generaRigheDaArrayJS()">GENERA RIGHE DA ARRAY</button>
                 <div class="row justify-content-center mt-4 align-items-center">
                     <div class="col text-right">
-                        <h3 class="d-inline m-2">Riepilogo Utenti Presenti</h3>
+                        <h3 class="d-inline m-2">Riepilogo Prodotti Presenti</h3>
                     </div>
                     <div class="col">
                         <button class="btn d-inline btn-danger m-2">+Nuovo Prodotto</button>
@@ -52,49 +67,35 @@
                     <thead>
                         <th>ID</th>
                         <th>Nome</th>
-                        <th>Cognome</th>
-                        <th>Username</th>
+                        <th>Descrizione</th>
+                        <th>Linguaggi conosciuti</th>
                         <th>Indirizzo azienda</th>
                     </thead>
                     
                     <tbody id ="bodyTabella">
-						<%  
-							if(request.getAttribute("utenti") != null){
-								List<Utente> utenti = (List<Utente>) request.getAttribute("utenti"); 
-								for(Utente u: utenti){	
-						%>
-								<tr>
-									<td><%= u.getId() %> </td>
-									<td><%= u.getNome() %> </td>
-									<td><%= u.getCognome() %></td>
-									<td> <%= u.getUsername() %> </td>
-									<td>JAVA</td>
-								</tr>
-								<% } 
-								}%>
+                    	<% 
+                    		List<Prodotto> prodotti = (List<Prodotto>) request.getAttribute("prodotti");
+                    		for(Prodotto p: prodotti){
+                    	%>
+                    	<tr>
+                    		<td><%= p.getNome() %></td>
+                    		<td><%= p.getDescrizione() %></td>
+                    		<td><%= p.getCategoria() %></td>
+                    		<td> <%= p.getprezzo() %> </td>
+                    		<td>
+                                <div class="btn-group">
+                                    <button class="btn btn-warning">Modifica</button>
+                                    <button class="btn btn-danger">Cancella</button>
+                                </div>
+                            </td>
+                    	</tr>
+                    	<% } %>
                     </tbody>
-
-
 
                 </table>
 
             </div>
         </div>
     </div>
-    <script>
-        function generaRigheDaArrayJS(){ 
-            let msg = "";
-            for(let i=0;i<utenti.length;i++){
-                //PER OGNI RIGA
-                msg += `<tr>`;
-                msg += `<td>${utenti[i].id}</td>`;
-                msg += `<td>${utenti[i].nome}</td>`;
-                msg += `<td>${utenti[i].cognome}</td>`;
-                msg += "<td>";
-            }
-            document.getElementById("bodyTabella").innerHTML = msg;
-            document.getElementsByTagName("table")[0].classList.remove("d-none");
-    }
-    </script>
 </body>
 </html>

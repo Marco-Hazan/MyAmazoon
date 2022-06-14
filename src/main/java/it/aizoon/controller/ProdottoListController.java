@@ -9,19 +9,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import it.aizoon.model.dao.UtenteDAO;
-import it.aizoon.model.dto.Utente;
+import it.aizoon.model.dao.ProdottoDAO;
+import it.aizoon.model.dto.Prodotto;
 
 /**
- * Servlet implementation class UtenteControllerList
+ * Servlet implementation class ProdottoListController
  */
-public class UtenteControllerList extends HttpServlet {
+public class ProdottoListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public UtenteControllerList() {
+    public ProdottoListController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,14 +31,10 @@ public class UtenteControllerList extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		UtenteDAO dao = new UtenteDAO();
-		List<Utente> utenti = dao.searchAll();
-		request.setAttribute("utenti",utenti);
-		String pagina = "utente-list.jsp";
-		//Il controller fa forward ad un'altra view
-		RequestDispatcher disp = request.getRequestDispatcher(pagina);
+		List<Prodotto> prodotti = new ProdottoDAO().searchAll();
+		request.setAttribute("prodotti", prodotti);
+		RequestDispatcher disp = request.getRequestDispatcher("lista-prodotti.jsp");
 		disp.forward(request, response);
-		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**

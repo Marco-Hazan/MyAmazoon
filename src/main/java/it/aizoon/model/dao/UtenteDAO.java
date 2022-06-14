@@ -27,7 +27,7 @@ public class UtenteDAO {
 		utenti.add(new Utente(1L,"Franco","Grivet","admin","admin"));
 		utenti.add(new Utente(2L,"Axel","Simo","axel","axel"));
 		utenti.add(new Utente(3L,"Giacomo","Parlatoni","giacomo","giacomo"));
-		utenti.add(new Utente(1L,"Giovanni","Graziano","giovanni","giovanni"));
+		utenti.add(new Utente(4L,"Giovanni","Graziano","giovanni","giovanni"));
 	}
 	
 	public UtenteDAO() {
