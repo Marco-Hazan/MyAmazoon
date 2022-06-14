@@ -46,4 +46,12 @@ public class UtenteDAO {
 		return ris;
 	}
 	
+	public List<Utente> searchAll(){
+		final List<Utente> copyutenti= new ArrayList<>();
+		for(Utente u: utenti) {
+			copyutenti.add(u);
+		}
+		return copyutenti;
+	}
+	
 }

@@ -1,3 +1,6 @@
+<%@page import="java.util.List"%>
+<%@page import="it.aizoon.model.dto.Utente"%>
+<%@ page language="java" contentType="text/html;" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,7 +41,7 @@
                 <button class="btn btn-warning" onclick="generaRigheDaArrayJS()">GENERA RIGHE DA ARRAY</button>
                 <div class="row justify-content-center mt-4 align-items-center">
                     <div class="col text-right">
-                        <h3 class="d-inline m-2">Riepilogo Prodotti Presenti</h3>
+                        <h3 class="d-inline m-2">Riepilogo Utenti Presenti</h3>
                     </div>
                     <div class="col">
                         <button class="btn d-inline btn-danger m-2">+Nuovo Prodotto</button>
@@ -55,7 +58,18 @@
                     </thead>
                     
                     <tbody id ="bodyTabella">
-
+						<%  
+							List<Utente> utenti = (List<Utente>) request.getAttribute("utenti"); 
+							for(Utente u: utenti){	
+						%>
+						<tr>
+							<td><%= u.getId() %> </td>
+							<td><%= u.getNome() %> </td>
+							<td><%= u.getCognome() %></td>
+							<td>JAVA</td>
+							<td>VIA DEI BALORDI 44</td>
+						</tr>
+						<% } %>
                     </tbody>
 
 

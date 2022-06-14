@@ -19,4 +19,14 @@
     <servlet-name>LoginController</servlet-name>
     <url-pattern>/LoginController</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UtenteControllerList</display-name>
+    <servlet-name>UtenteControllerList</servlet-name>
+    <servlet-class>it.aizoon.controller.UtenteControllerList</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UtenteControllerList</servlet-name>
+    <url-pattern>/UtenteControllerList</url-pattern>
+  </servlet-mapping>
 </web-app>
